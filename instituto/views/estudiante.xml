@@ -1,0 +1,65 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="instituto.estudiante_listado">
+      <field name="name">instituto.estudiante_formulario</field>
+      <field name="model">instituto.estudiante</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="nombre"/>
+          <field name="apellidos"/>
+          <field name="direccion"/>
+          <field name="ciudad"/>
+          <field name="asignaturas"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="instituto.estudiante_formulario">
+      <field name="name">instituto.estudiante_formulario</field>
+      <field name="model">instituto.estudiante</field>
+      <field name="arch" type="xml">
+        <form>
+          <group>
+            <field name="nombre"/>
+            <field name="apellidos"/>
+            <field name="direccion"/>
+            <field name="ciudad"/>
+            <field name="asignaturas"/>
+          </group>
+        </form>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="instituto.estudiante_ventana_listado">
+      <field name="name">estudiante listado</field>
+      <field name="res_model">instituto.estudiante</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="instituto.estudiante_ventana_formulario">
+      <field name="name">estudiante formulario</field>
+      <field name="res_model">instituto.estudiante</field>
+      <field name="view_mode">form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Instituto" id="instituto.menu_root"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Estudiante" id="instituto.menu_2" parent="instituto.menu_root"/>
+
+    <!-- actions -->
+
+    <menuitem name="Listado" id="instituto.menu_2_list" parent="instituto.menu_2" action="instituto.estudiante_ventana_listado"/>
+    <menuitem name="Formulario" id="instituto.menu_2_form" parent="instituto.menu_2" action="instituto.estudiante_ventana_formulario"/>
+
+  </data>
+</odoo>
